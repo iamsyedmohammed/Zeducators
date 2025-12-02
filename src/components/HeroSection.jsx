@@ -44,7 +44,7 @@ export default function HeroSection() {
             </div>
             <div className="hero-wave">
                 <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
-                    <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" fill="white" />
+                    <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" style={{ fill: 'var(--bg-primary)' }} />
                 </svg>
             </div>
         </section>

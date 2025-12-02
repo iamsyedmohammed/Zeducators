@@ -85,14 +85,14 @@
   font-weight: 700;
   line-height: 1.15;
   margin-bottom: var(--space-xl);
-  color: var(--white);
+  color: var(--color-light-beige);
   letter-spacing: -0.02em;
 }
 
 .hero-description {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(201, 201, 191, 0.9);
   margin-bottom: var(--space-2xl);
   max-width: 580px;
 }
@@ -303,7 +303,7 @@
 
 .offering-card p {
   font-size: 0.9375rem;
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   margin-bottom: var(--space-lg);
 }
 
@@ -335,11 +335,11 @@
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-xl);
-  background: var(--white);
+  background: var(--content-bg);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
-  border: 1px solid var(--neutral-100);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .category-card:hover {
@@ -396,7 +396,7 @@
 }
 
 .category-content p {
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   margin-bottom: var(--space-md);
 }
 
@@ -467,11 +467,11 @@
   display: flex;
   gap: var(--space-md);
   padding: var(--space-lg);
-  background: var(--white);
+  background: var(--content-bg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
-  border: 1px solid var(--neutral-100);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .feature-item:hover {
@@ -500,7 +500,7 @@
 
 .feature-text p {
   font-size: 0.875rem;
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   line-height: 1.5;
 }
 
@@ -533,7 +533,8 @@
 
 .stat-item .stat-label {
   font-size: 1rem;
-  color: var(--neutral-400);
+  color: var(--color-light-beige);
+  opacity: 0.8;
 }
 
 /* ===== WHO WE ARE SECTION ===== */
@@ -615,7 +616,7 @@
 
 .who-content .lead {
   font-size: 1.0625rem;
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
 }
@@ -632,7 +633,7 @@
   align-items: center;
   gap: var(--space-sm);
   font-weight: 500;
-  color: var(--neutral-700);
+  color: var(--color-light-beige);
 }
 
 .icon-check {
@@ -667,12 +668,12 @@
 .featured-course-card {
   display: flex;
   flex-direction: column;
-  background: var(--white);
+  background: var(--content-bg);
   border-radius: 24px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--neutral-100);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   height: 100%;
   position: relative;
 }
@@ -784,7 +785,7 @@
 
 .course-header h3 {
   font-size: 1.5rem;
-  color: var(--primary-800);
+  color: var(--heading-color);
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
@@ -793,7 +794,7 @@
 
 .course-header .course-grade {
   font-size: 1rem;
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   font-weight: 500;
   margin: 0;
   line-height: 1.5;
@@ -894,7 +895,7 @@
   flex: 1;
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--neutral-700);
+  color: var(--color-light-beige);
   margin-bottom: var(--space-lg);
   font-style: italic;
 }
@@ -928,7 +929,8 @@
 
 .author-info span {
   font-size: 0.875rem;
-  color: var(--neutral-500);
+  color: var(--color-light-beige);
+  opacity: 0.8;
 }
 
 /* ===== FAQ SECTION ===== */
@@ -938,11 +940,11 @@
 }
 
 .faq-item {
-  background: var(--white);
+  background: var(--content-bg);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-md);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--neutral-100);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -964,7 +966,7 @@
   font-size: 1rem;
   font-family: var(--font-body);
   font-weight: 600;
-  color: var(--neutral-800);
+  color: var(--heading-color);
 }
 
 .faq-icon {
@@ -990,7 +992,7 @@
 
 .faq-answer p {
   padding: 0 var(--space-xl) var(--space-lg);
-  color: var(--neutral-600);
+  color: var(--color-light-beige);
   line-height: 1.7;
 }
 
