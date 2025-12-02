@@ -1,0 +1,28 @@
+:root {
+    /* User Defined Palette */
+    --color-light-beige: #c9c9bf;
+    /* Background, footer text */
+    --color-deep-brownish-yellow: #635623;
+    /* Main text color */
+    --color-dark-green: #345a36;
+    /* Header background */
+    --color-olive-green: #948e69;
+    /* Content box background */
+    --color-golden-brown: #7f6c2a;
+    /* Content box headings, button background */
+    --color-sage-green: #627e66;
+    /* Button hover background */
+    --color-forest-green: #466548;
+    /* Footer background */
+
+    /* Semantic Mappings */
+    --bg-primary: var(--color-light-beige);
+    --text-primary: var(--color-deep-brownish-yellow);
+    --header-bg: var(--color-dark-green);
+    --content-bg: var(--color-olive-green);
+    --heading-color: var(--color-golden-brown);
+    --btn-bg: var(--color-golden-brown);
+    --btn-hover-bg: var(--color-sage-green);
+    --footer-bg: var(--color-forest-green);
+    --footer-text: var(--color-light-beige);
+}

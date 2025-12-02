@@ -1,58 +1,22 @@
 /* ===== CSS VARIABLES ===== */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import './styles/colors.css';
 
 :root {
-  /* Primary Palette - Zeducators Green #42A55B */
-  --primary-900: #1a4224;
-  --primary-800: #236b31;
-  --primary-700: #2d8a3f;
-  --primary-600: #38944a;
-  --primary-500: #42A55B;
-  --primary-400: #5cb774;
-  --primary-300: #7fc993;
-  --primary-200: #a8dbb5;
-  --primary-100: #d4edd9;
+  /* Mapping old variables to new palette where possible to maintain some compatibility */
+  --primary-900: var(--color-dark-green);
+  --primary-500: var(--color-golden-brown);
+  /* Used for buttons/accents */
 
-  /* Accent - Button Blue #3482D9 */
-  --accent-500: #3482D9;
-  --accent-400: #5a9ae3;
-  --accent-300: #82b2eb;
-  --accent-200: #b3d0f4;
-  --accent-600: #2a68ad;
-
-  /* Secondary - Supporting Olive #65642F */
-  --secondary-500: #65642F;
-  --secondary-400: #7d7c45;
-  --secondary-300: #9a995e;
-  --secondary-200: #c4c399;
-  --secondary-600: #4e4d24;
-
-  /* Tertiary - Complementary Gold */
-  --tertiary-500: #d4a73a;
-  --tertiary-400: #e0bc5f;
-  --tertiary-300: #ebd088;
-  --tertiary-200: #f5e5b8;
-
-  /* Neutrals */
-  --neutral-950: #0f1114;
-  --neutral-900: #1a1d23;
-  --neutral-800: #2a2e36;
-  --neutral-700: #3d424d;
-  --neutral-600: #535966;
-  --neutral-500: #6b7280;
-  --neutral-400: #9ca3af;
-  --neutral-300: #d1d5db;
-  --neutral-200: #e5e7eb;
-  --neutral-100: #f3f4f6;
-  --neutral-50: #f9fafb;
+  --neutral-800: var(--color-deep-brownish-yellow);
+  /* Main text */
+  --neutral-100: var(--color-light-beige);
   --white: #ffffff;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-400) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-400) 100%);
-  --gradient-hero: linear-gradient(160deg, #1a1d23 0%, #242830 40%, #2d323a 100%);
-  --gradient-card: linear-gradient(180deg, var(--white) 0%, var(--neutral-50) 100%);
-  --gradient-glow: radial-gradient(ellipse at center, var(--accent-400) 0%, transparent 70%);
+  /* Gradients - Adjusted to use new palette */
+  --gradient-primary: linear-gradient(135deg, var(--color-golden-brown) 0%, var(--color-deep-brownish-yellow) 100%);
+  --gradient-hero: linear-gradient(160deg, var(--color-dark-green) 0%, var(--color-forest-green) 100%);
+  --gradient-card: linear-gradient(180deg, var(--color-olive-green) 0%, var(--color-light-beige) 100%);
 
   /* Typography */
   --font-display: 'Merriweather', Georgia, serif;
@@ -77,18 +41,16 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(26, 66, 36, 0.06);
-  --shadow-md: 0 4px 20px rgba(26, 66, 36, 0.1);
-  --shadow-lg: 0 8px 40px rgba(26, 66, 36, 0.15);
-  --shadow-xl: 0 20px 60px rgba(26, 66, 36, 0.2);
-  --shadow-glow: 0 0 40px rgba(66, 165, 91, 0.3);
-  --shadow-accent: 0 8px 30px rgba(52, 130, 217, 0.3);
+  --shadow-sm: 0 2px 8px rgba(52, 90, 54, 0.06);
+  --shadow-md: 0 4px 20px rgba(52, 90, 54, 0.1);
+  --shadow-lg: 0 8px 40px rgba(52, 90, 54, 0.15);
+  --shadow-xl: 0 20px 60px rgba(52, 90, 54, 0.2);
+  --shadow-accent: 0 8px 30px rgba(127, 108, 42, 0.3);
 
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Container */
   --container-max: 1280px;
@@ -114,8 +76,8 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--neutral-800);
-  background-color: var(--white);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   overflow-x: hidden;
 }
 
@@ -179,7 +141,7 @@ h6 {
 
 .section-dark {
   background: var(--gradient-hero);
-  color: var(--white);
+  color: var(--color-light-beige);
 }
 
 .section-dark h1,
@@ -219,14 +181,15 @@ h6 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-400) 100%);
-  color: var(--white);
+  background: var(--btn-bg);
+  color: var(--color-light-beige);
   box-shadow: var(--shadow-accent);
 }
 
 .btn-primary:hover {
+  background: var(--btn-hover-bg);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(52, 130, 217, 0.4);
+  box-shadow: 0 12px 40px rgba(52, 90, 54, 0.4);
 }
 
 .btn-secondary {
@@ -260,12 +223,21 @@ h6 {
 
 /* ===== CARDS ===== */
 .card {
-  background: var(--gradient-card);
+  background: var(--content-bg);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
-  border: 1px solid var(--neutral-100);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6 {
+  color: var(--heading-color);
 }
 
 .card:hover {
