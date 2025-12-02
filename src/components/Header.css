@@ -139,7 +139,7 @@
 }
 
 .header.scrolled .nav-link {
-  color: var(--color-light-beige);
+  color: var(--color-deep-brownish-yellow);
 }
 
 .nav-link:hover {
@@ -148,8 +148,8 @@
 }
 
 .header.scrolled .nav-link:hover {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-golden-brown);
+  background: rgba(99, 86, 35, 0.1);
 }
 
 .nav-link.active {
@@ -159,8 +159,8 @@
 }
 
 .header.scrolled .nav-link.active {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-golden-brown);
+  background: rgba(99, 86, 35, 0.15);
   font-weight: 600;
 }
 
@@ -192,7 +192,7 @@
 }
 
 .header.scrolled .menu-toggle {
-  color: var(--color-light-beige);
+  color: var(--color-deep-brownish-yellow);
 }
 
 .menu-toggle:focus {

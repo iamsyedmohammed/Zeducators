@@ -18,11 +18,11 @@
     /* Semantic Mappings */
     --bg-primary: var(--color-light-beige);
     --text-primary: var(--color-deep-brownish-yellow);
-    --header-bg: var(--color-dark-green);
+    --header-bg: #ffffff;
     --content-bg: var(--color-olive-green);
     --heading-color: var(--color-golden-brown);
     --btn-bg: var(--color-golden-brown);
     --btn-hover-bg: var(--color-sage-green);
-    --footer-bg: var(--color-forest-green);
+    --footer-bg: #000000;
     --footer-text: var(--color-light-beige);
 }
