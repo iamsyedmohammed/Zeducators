@@ -133,7 +133,7 @@
   padding: var(--space-sm) var(--space-md);
   font-size: 1.0625rem;
   font-weight: 500;
-  color: var(--color-light-beige);
+  color: var(--color-deep-brownish-yellow);
   transition: all var(--transition-fast);
   border-radius: var(--radius-sm);
 }
@@ -143,8 +143,8 @@
 }
 
 .nav-link:hover {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-golden-brown);
+  background: rgba(99, 86, 35, 0.1);
 }
 
 .header.scrolled .nav-link:hover {
@@ -153,8 +153,8 @@
 }
 
 .nav-link.active {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-golden-brown);
+  background: rgba(99, 86, 35, 0.15);
   font-weight: 600;
 }
 
