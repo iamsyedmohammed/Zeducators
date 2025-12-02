@@ -1,0 +1,348 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  padding: 0;
+  transition: all var(--transition-base);
+  background: var(--white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Top Bar */
+.top-bar {
+  background: #466548;
+  /* Brand Green */
+  color: var(--white);
+  padding: var(--space-xs) 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  height: 40px;
+  overflow: hidden;
+}
+
+.header.scrolled .top-bar {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* Add shadow for separation */
+}
+
+.top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.top-bar-contact {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.contact-item:hover {
+  opacity: 1;
+}
+
+.top-bar-social {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.top-bar-social a {
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.top-bar-social a:hover {
+  opacity: 1;
+}
+
+.header-container {
+  padding: 10px var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  width: 100%;
+  transition: padding var(--transition-base);
+  min-height: 80px;
+  /* Ensure minimum height */
+}
+
+.header.scrolled .header-container {
+  padding: 10px var(--container-padding);
+  min-height: 60px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1001;
+}
+
+.logo-img {
+  height: 70px;
+  width: auto;
+  transition: all var(--transition-base);
+  object-fit: contain;
+}
+
+.header.scrolled .logo-img {
+  height: 70px;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--neutral-700);
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+}
+
+.header.scrolled .nav-link {
+  color: var(--neutral-700);
+}
+
+.nav-link:hover {
+  color: var(--accent-500);
+  background: rgba(52, 130, 217, 0.1);
+}
+
+.header.scrolled .nav-link:hover {
+  color: var(--accent-500);
+  background: rgba(52, 130, 217, 0.1);
+}
+
+.nav-link.active {
+  color: var(--accent-600);
+  background: rgba(52, 130, 217, 0.15);
+  font-weight: 600;
+}
+
+.header.scrolled .nav-link.active {
+  color: var(--accent-600);
+  background: rgba(52, 130, 217, 0.15);
+  font-weight: 600;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.header-phone {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu-toggle {
+  display: none;
+  color: var(--neutral-800);
+  padding: var(--space-sm);
+  z-index: 1001;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.header.scrolled .menu-toggle {
+  color: var(--neutral-800);
+}
+
+.menu-toggle:focus {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+  .top-bar {
+    display: none;
+  }
+
+  .header-container {
+    gap: var(--space-md);
+  }
+
+  .nav {
+    flex: 0;
+  }
+
+  .header-phone span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-md) 0;
+  }
+
+  .header.scrolled {
+    padding: var(--space-md) 0;
+  }
+
+  .header-container {
+    gap: var(--space-sm);
+    min-height: 50px;
+    padding: 5px var(--container-padding);
+  }
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .header.scrolled .logo-img {
+    height: 40px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-hero);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all var(--transition-base);
+    z-index: 1000;
+    padding: var(--space-4xl) var(--space-lg);
+    overflow-y: auto;
+  }
+
+  .nav-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+    max-width: 400px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    padding: var(--space-xs) var(--space-lg);
+    color: var(--white);
+    width: auto;
+    min-width: 200px;
+    text-align: center;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+  }
+
+  .header-phone {
+    display: none;
+  }
+
+  .header-actions {
+    gap: var(--space-sm);
+  }
+
+  /* Ensure menu toggle is visible when menu is open */
+  .header .menu-toggle {
+    color: var(--neutral-800);
+  }
+
+  .header.scrolled .menu-toggle {
+    color: var(--neutral-800);
+  }
+
+  /* When menu is open, toggle should be white */
+  .header.menu-open .menu-toggle {
+    color: var(--white);
+  }
+
+  /* Hide logo when menu is open */
+  .header.menu-open .logo {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+}

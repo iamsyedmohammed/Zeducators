@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Template</title>
+  <style>
+    /* Base reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c9c9bf; /* Light beige background */
+      color: #635623; /* Deep brownish yellow text */
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: #345a36; /* Dark green background */
+      color: #c9c9bf; /* Light beige text */
+      padding: 16px 32px; /* Applied 8px rule for padding */
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem; /* Increased header size */
+      font-weight: bold; /* Added boldness */
+    }
+
+    /* Main Section */
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px; /* 8px rule */
+    }
+
+    .content-box {
+      background-color: #948e69; /* Olive green background */
+      padding: 32px; /* Applied 8px rule for padding */
+      border-radius: 8px;
+      width: 48%;
+      margin-bottom: 32px; /* 8px rule for spacing */
+    }
+
+    .content-box h2 {
+      color: #7f6c2a; /* Golden brown */
+      font-size: 1.8rem;
+      margin-bottom: 16px; /* 8px rule */
+    }
+
+    .content-box p {
+      font-size: 1rem;
+      color: #4a4a2a; /* Darker text for better contrast */
+      margin-bottom: 16px; /* 8px rule */
+    }
+
+    /* Button */
+    .btn {
+      background-color: #7f6c2a; /* Golden brown */
+      color: #c9c9bf; /* Light beige text */
+      padding: 12px 24px; /* Increased padding for buttons */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 1rem;
+      display: inline-block;
+      margin-top: 16px; /* 8px rule for spacing */
+      text-decoration: none; /* Remove underline from buttons */
+    }
+
+    .btn:hover {
+      background-color: #627e66; /* Sage green on hover */
+      color: #ffffff; /* Lighten text color on hover for readability */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #466548; /* Forest green background */
+      color: #c9c9bf; /* Light beige text */
+      text-align: center;
+      padding: 32px; /* Applied 8px rule for padding */
+      margin-top: 32px; /* 8px rule for spacing */
+    }
+
+    /* Responsiveness */
+    @media screen and (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .content-box {
+        width: 90%; /* Make content boxes take up full width on smaller screens */
+        margin-bottom: 32px; /* 8px rule for spacing */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Color Palette Example</h1>
+  </header>
+
+  <div class="main-content">
+    <div class="content-box">
+      <h2>Content Box 1</h2>
+      <p>This is a sample section where you can put content. It uses the olive green background (#948e69) and golden brown text (#7f6c2a) for a warm feel.</p>
+      <a href="#" class="btn">Read More</a>
+    </div>
+
+    <div class="content-box">
+      <h2>Content Box 2</h2>
+      <p>This section has a similar feel but utilizes the muted sage green text (#627e66) for readability. It's paired with a golden brown accent for contrast.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Your Company. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
