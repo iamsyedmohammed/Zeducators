@@ -83,7 +83,7 @@ export default function Header() {
               <li key={link.path}>
                 <NavLink
                   to={link.path}
-                  className={({ isActive }) => `nav - link ${isActive ? 'active' : ''} `}
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
