@@ -64,11 +64,11 @@ export default function Header() {
             </a>
           </div>
           <div className="top-bar-social">
-            <a href="#" aria-label="Facebook"><Facebook size={16} /></a>
-            <a href="#" aria-label="Instagram"><Instagram size={16} /></a>
-            <a href="#" aria-label="Twitter"><Twitter size={16} /></a>
-            <a href="#" aria-label="LinkedIn"><Linkedin size={16} /></a>
-            <a href="#" aria-label="YouTube"><Youtube size={16} /></a>
+            <a href="https://www.facebook.com/profile.php?id=61579873028872" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={16} /></a>
+            <a href="https://www.instagram.com/zeducators.official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={16} /></a>
+            <a href="https://x.com/Zed_Zeducators" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter size={16} /></a>
+            <a href="https://www.linkedin.com/company/zeducators/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a>
+            <a href="https://www.youtube.com/@zeducators.official" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Youtube size={16} /></a>
           </div>
         </div>
       </div>
@@ -103,11 +103,11 @@ export default function Header() {
               </a>
             </div>
             <div className="mobile-social">
-              <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
-              <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
-              <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
-              <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
-              <a href="#" aria-label="YouTube"><Youtube size={20} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61579873028872" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
+              <a href="https://www.instagram.com/zeducators.official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></a>
+              <a href="https://x.com/Zed_Zeducators" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter size={20} /></a>
+              <a href="https://www.linkedin.com/company/zeducators/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="https://www.youtube.com/@zeducators.official" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Youtube size={20} /></a>
             </div>
           </div>
         </nav>

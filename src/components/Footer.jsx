@@ -44,19 +44,19 @@ export default function Footer() {
                 quality instruction, innovative teaching, and personalized learning in STEM+M.
               </p>
               <div className="footer-social">
-                <a href="#" aria-label="Facebook" className="social-link">
+                <a href="https://www.facebook.com/profile.php?id=61579873028872" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-link">
                   <Facebook size={20} />
                 </a>
-                <a href="#" aria-label="Twitter" className="social-link">
+                <a href="https://x.com/Zed_Zeducators" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="social-link">
                   <Twitter size={20} />
                 </a>
-                <a href="#" aria-label="Instagram" className="social-link">
+                <a href="https://www.instagram.com/zeducators.official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-link">
                   <Instagram size={20} />
                 </a>
-                <a href="#" aria-label="LinkedIn" className="social-link">
+                <a href="https://www.linkedin.com/company/zeducators/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-link">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" aria-label="YouTube" className="social-link">
+                <a href="https://www.youtube.com/@zeducators.official" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-link">
                   <Youtube size={20} />
                 </a>
               </div>

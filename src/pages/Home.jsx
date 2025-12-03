@@ -36,9 +36,11 @@ export default function Home() {
       "contactType": "customer service"
     },
     "sameAs": [
-      "https://facebook.com/zeducators",
-      "https://twitter.com/zeducators",
-      "https://instagram.com/zeducators"
+      "https://www.facebook.com/profile.php?id=61579873028872",
+      "https://x.com/Zed_Zeducators",
+      "https://www.instagram.com/zeducators.official/",
+      "https://www.linkedin.com/company/zeducators/",
+      "https://www.youtube.com/@zeducators.official"
     ]
   }
 
