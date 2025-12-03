@@ -510,6 +510,6 @@ h6 {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background: var(--primary-200);
-  color: var(--primary-900);
+  background: var(--color-golden-brown);
+  color: var(--white);
 }
