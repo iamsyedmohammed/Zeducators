@@ -1,6 +1,6 @@
 .course-details-page {
     padding-bottom: var(--space-4xl);
-    background: var(--white);
+    background: #c9c9bf;
 }
 
 /* Breadcrumbs */
@@ -11,7 +11,8 @@
     display: flex;
     align-items: center;
     gap: var(--space-xs);
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-xl);
 }
 
 .breadcrumbs a {

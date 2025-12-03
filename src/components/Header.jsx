@@ -54,6 +54,10 @@ export default function Header() {
               <Phone size={16} />
               <span>+91 9966002827</span>
             </a>
+            <a href="tel:+919876543210" className="contact-item">
+              <Phone size={16} />
+              <span>+91 9876543210</span>
+            </a>
             <a href="mailto:contact@zeducators.org " className="contact-item">
               <Mail size={16} />
               <span>contact@zeducators.org </span>
@@ -96,6 +100,10 @@ export default function Header() {
               <a href="tel:+919966002827" className="mobile-contact-item">
                 <Phone size={18} />
                 <span>+91 9966002827</span>
+              </a>
+              <a href="tel:+919876543210" className="mobile-contact-item">
+                <Phone size={18} />
+                <span>+91 9876543210</span>
               </a>
               <a href="mailto:info@zeducators.org" className="mobile-contact-item">
                 <Mail size={18} />

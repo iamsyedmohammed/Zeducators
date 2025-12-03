@@ -113,12 +113,16 @@ function HeroSection() {
               <span className="text-highlight">
                 <Typewriter
                   texts={[
-                    "Begin Their Journey",
-                    "Unlock Their Potential",
+                    "Achieve Excellence",
                     "Shape Their Future",
-                    "Achieve Excellence"
+                    "Find Their Purpose",
+                    "Learn For Life",
+                    "Chase True Success"
                   ]}
                 />
+
+
+
               </span>
             </h1>
             <p className="animate-fade-in-up stagger-2">
@@ -192,7 +196,18 @@ function CategoriesSection() {
       <div className="container">
         <div className="section-header">
           <span className="badge">Course Categories</span>
-          <h2>Explore Our <span className="text-gradient">Learning Paths</span></h2>
+          <h2>
+            Explore Our Courses in <span className="text-rotator">
+              <span className="rotator-wrapper">
+                <span className="rotating-text">Academic Coaching </span>
+                <span className="rotating-text">Competitive Exams </span>
+                <span className="rotating-text">IT & Computer </span>
+                <span className="rotating-text">Language Learning </span>
+                <span className="rotating-text">Management Skills </span>
+                <span className="rotating-text">Academic Coaching </span>
+              </span>
+            </span>
+          </h2>
           <p>From academic excellence to career readiness, we have courses tailored for every goal</p>
         </div>
         <div className="categories-grid">
@@ -232,7 +247,7 @@ function FeaturedCoursesSection() {
       <div className="container">
         <div className="section-header">
           <span className="badge">Featured Courses</span>
-          <h2>Featured <span className="text-gradient">Courses</span></h2>
+          <h2>Courses that turn ambition into <span className="text-gradient">Achievement</span></h2>
           <p>Explore our most popular academic coaching courses designed to build strong foundations</p>
         </div>
         <div className="featured-grid">

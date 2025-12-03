@@ -155,7 +155,7 @@ h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-golden-brown) 0%, var(--color-deep-brownish-yellow) 100%);
+  background: var(--color-golden-brown);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

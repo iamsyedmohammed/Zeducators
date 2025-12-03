@@ -45,7 +45,19 @@ export default function CategoriesSection() {
             <div className="container">
                 <div className="section-header">
                     <span className="badge badge-accent">Course Categories</span>
-                    <h2>Explore Our <span className="text-gradient">Learning Paths</span></h2>
+                    <h2>
+                        Explore Our <span className="text-rotator">
+                            <span className="rotator-wrapper">
+                                <span className="rotating-text">All Courses</span>
+                                <span className="rotating-text">Academic</span>
+                                <span className="rotating-text">Competitive</span>
+                                <span className="rotating-text">IT & Coding</span>
+                                <span className="rotating-text">Languages</span>
+                                <span className="rotating-text">Management</span>
+                                <span className="rotating-text">All Courses</span>
+                            </span>
+                        </span>
+                    </h2>
                     <p>From academic excellence to career readiness, we have courses tailored for every goal</p>
                 </div>
                 <div className="categories-grid">

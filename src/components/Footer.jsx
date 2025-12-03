@@ -97,6 +97,12 @@ export default function Footer() {
                   </div>
                 </li>
                 <li>
+                  <Phone size={18} />
+                  <div>
+                    <a href="tel:+919876543210">+91 9876543210</a>
+                  </div>
+                </li>
+                <li>
                   <Mail size={18} />
                   <div>
                     <a href="mailto:info@zeducators.org">info@zeducators.org</a>
@@ -132,7 +138,7 @@ export default function Footer() {
         <div className="container">
           <div className="footer-bottom-content">
             <p>
-              © {currentYear} Zeducators. Made with <Heart size={14} className="heart-icon" /> for learners everywhere.
+              Zeducators © {currentYear} . Made with <i className="fas fa-heart heart-icon" style={{ fontSize: '14px' }}></i> for learners everywhere.
             </p>
             <div className="footer-legal">
               <Link to="/privacy">Privacy Policy</Link>
