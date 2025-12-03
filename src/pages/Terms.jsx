@@ -13,9 +13,16 @@ import {
 } from 'lucide-react'
 import './Terms.css'
 
+import SEO from '../components/SEO'
+
 export default function Terms() {
   return (
     <div className="terms-page">
+      <SEO
+        title="Terms of Service"
+        description="Read Zeducators' Terms of Service to understand the rules and regulations for using our educational platform."
+        canonical="/terms"
+      />
       <HeroSection />
       <ContentSection />
     </div>

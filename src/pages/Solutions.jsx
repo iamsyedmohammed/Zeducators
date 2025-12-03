@@ -19,9 +19,16 @@ import {
 } from 'lucide-react'
 import './Solutions.css'
 
+import SEO from '../components/SEO'
+
 export default function Solutions() {
   return (
     <div className="solutions-page">
+      <SEO
+        title="Solutions"
+        description="Educational solutions for institutions and corporations, including training, research support, and EdTech integration. Partner with Zeducators."
+        canonical="/solutions"
+      />
       <HeroSection />
       <SolutionsSection />
       <TechnologiesSection />

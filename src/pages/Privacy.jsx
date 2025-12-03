@@ -14,9 +14,16 @@ import {
 } from 'lucide-react'
 import './Privacy.css'
 
+import SEO from '../components/SEO'
+
 export default function Privacy() {
   return (
     <div className="privacy-page">
+      <SEO
+        title="Privacy Policy"
+        description="Read Zeducators' Privacy Policy to understand how we collect, use, and protect your personal information."
+        canonical="/privacy"
+      />
       <HeroSection />
       <ContentSection />
     </div>

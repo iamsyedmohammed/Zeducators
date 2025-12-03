@@ -1,0 +1,55 @@
+.not-found-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-4xl) 0;
+    background: var(--color-light-beige);
+}
+
+.not-found-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: clamp(6rem, 15vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-golden-brown) 0%, var(--color-deep-brownish-yellow) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-md);
+    font-family: var(--font-display);
+}
+
+.not-found-content h2 {
+    font-size: 2rem;
+    color: var(--color-dark-green);
+    margin-bottom: var(--space-md);
+}
+
+.not-found-content p {
+    font-size: 1.125rem;
+    color: var(--neutral-600);
+    margin-bottom: var(--space-xl);
+}
+
+.not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .not-found-actions {
+        flex-direction: column;
+    }
+
+    .not-found-actions .btn {
+        width: 100%;
+    }
+}

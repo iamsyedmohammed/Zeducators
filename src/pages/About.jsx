@@ -19,9 +19,16 @@ import {
 } from 'lucide-react'
 import './About.css'
 
+import SEO from '../components/SEO'
+
 export default function About() {
   return (
     <div className="about">
+      <SEO
+        title="About Us"
+        description="Learn about Zeducators' mission to redefine education through innovation, inclusivity, and excellence. Meet our team and discover our values."
+        canonical="/about"
+      />
       <HeroSection />
       <WhoWeAreSection />
       <VisionMissionSection />

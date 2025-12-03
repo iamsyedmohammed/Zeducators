@@ -159,16 +159,26 @@
 .btn-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
-  color: var(--color-golden-brown);
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 10px 24px;
+  background-color: var(--color-golden-brown);
+  color: var(--white);
+  border-radius: 50px;
+  font-size: 0.9rem;
   font-weight: 600;
+  transition: all 0.3s ease;
   text-decoration: none;
-  transition: gap 0.3s ease;
+  width: fit-content;
 }
 
 .btn-link:hover {
-  gap: var(--space-sm);
-  color: var(--color-deep-brownish-yellow);
+  background-color: var(--color-deep-brownish-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 12px;
+  color: var(--white);
 }
 
 /* ===== TECHNOLOGIES ===== */

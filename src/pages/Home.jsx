@@ -15,14 +15,41 @@ import {
   Mic,
   Briefcase,
   ShieldCheck,
-  Layout
+  Layout,
+  ChevronDown
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import './Home.css'
 
+import SEO from '../components/SEO'
+
 export default function Home() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zeducators",
+    "url": "https://zeducators.org",
+    "logo": "https://zeducators.org/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9966002827",
+      "contactType": "customer service"
+    },
+    "sameAs": [
+      "https://facebook.com/zeducators",
+      "https://twitter.com/zeducators",
+      "https://instagram.com/zeducators"
+    ]
+  }
+
   return (
-    <div className="home-page">
+    <div className="home">
+      <SEO
+        title="Home"
+        description="Zeducators offers expert coaching in STEM+M, languages, and competitive exams. Join us for personalized learning and holistic development."
+        canonical="/"
+        schema={organizationSchema}
+      />
       <HeroSection />
       <CategoriesSection />
       <FeaturedCoursesSection />
@@ -122,30 +149,35 @@ function HeroSection() {
 function CategoriesSection() {
   const categories = [
     {
+      id: 'academic',
       icon: GraduationCap,
       title: 'Academic Coaching',
       description: 'All Boards Courses, Classes for Grades 1 to 12',
       tags: ['CBSE', 'ICSE', 'State Boards', 'All Subjects']
     },
     {
+      id: 'competitive',
       icon: BookOpen,
       title: 'Competitive Exams',
       description: 'Preparation for entrance examinations',
       tags: ['JEE', 'NEET', 'EAMCET', 'CUET']
     },
     {
+      id: 'it',
       icon: Monitor,
       title: 'IT & Computer',
       description: 'Technical skills for the digital age',
       tags: ['Python', 'Web Dev', 'Coding', 'Data Science']
     },
     {
+      id: 'language',
       icon: Mic,
       title: 'Language Learning',
       description: 'Master communication skills',
       tags: ['Spoken English', 'Grammar', 'Public Speaking']
     },
     {
+      id: 'management',
       icon: Briefcase,
       title: 'Management Skills',
       description: 'Business and professional development',
@@ -175,6 +207,9 @@ function CategoriesSection() {
                     <span key={i} className="tag">{tag}</span>
                   ))}
                 </div>
+                <Link to={`/courses?category=${category.id}`} className="category-explore-btn">
+                  Explore <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
           ))}
@@ -184,75 +219,11 @@ function CategoriesSection() {
   )
 }
 
+import { courses } from '../data/courses'
+
 function FeaturedCoursesSection() {
-  const courses = [
-    {
-      title: 'Tuition all Subjects',
-      grade: '11th – 12th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'
-    },
-    {
-      title: 'Tuition all Subjects',
-      grade: '8th – 10th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80'
-    },
-    {
-      title: 'Tuition all Subjects',
-      grade: '1st – 7th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80'
-    },
-    {
-      title: 'Math',
-      grade: '1st – 7th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80'
-    },
-    {
-      title: 'Math',
-      grade: '8th – 10th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1596495577886-d920f1fb7238?w=800&q=80'
-    },
-    {
-      title: 'Math',
-      grade: '11th – 12th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80'
-    },
-    {
-      title: 'Science',
-      grade: '1st – 7th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80'
-    },
-    {
-      title: 'Science',
-      grade: '8th to 10th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80'
-    },
-    {
-      title: 'Biology',
-      grade: '11th & 12th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16ba6?w=800&q=80'
-    },
-    {
-      title: 'Chemistry',
-      grade: '11th – 12th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80'
-    },
-    {
-      title: '11th – 12th Grade',
-      grade: '11th – 12th Grade',
-      category: 'Academic Coaching',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80'
-    }
-  ]
+  // Use first 10 courses as featured
+  const featuredCourses = courses.slice(0, 10)
 
   return (
     <section className="featured-courses section section-alt">
@@ -263,7 +234,7 @@ function FeaturedCoursesSection() {
           <p>Explore our most popular academic coaching courses designed to build strong foundations</p>
         </div>
         <div className="featured-grid">
-          {courses.map((course, index) => (
+          {featuredCourses.map((course, index) => (
             <div key={index} className="featured-card">
               <div className="card-image">
                 <img src={course.image} alt={course.title} />
@@ -272,7 +243,7 @@ function FeaturedCoursesSection() {
               <div className="card-content">
                 <h3>{course.title}</h3>
                 <p className="grade-text">{course.grade}</p>
-                <Link to="/courses" className="card-link">
+                <Link to={`/courses/${course.slug}`} className="card-link">
                   Read more <ArrowRight size={16} />
                 </Link>
               </div>
@@ -453,12 +424,16 @@ function TestimonialsSection() {
           <p>Join thousands of successful learners who transformed their academic journey with us</p>
         </div>
         <div className="testimonials-grid">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.slice(0, 3).map((testimonial, index) => (
             <div key={index} className="testimonial-card">
-              <div className="quote-icon">
-                <Quote size={32} />
+              <div className="card-header">
+                <div className="stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} fill="var(--color-golden-brown)" color="var(--color-golden-brown)" />
+                  ))}
+                </div>
               </div>
-              <p className="testimonial-text">"{testimonial.quote}"</p>
+              <p className="testimonial-text">{testimonial.quote}</p>
               <div className="testimonial-author-box">
                 <div className="author-avatar">{testimonial.initial}</div>
                 <div className="testimonial-author">
@@ -525,7 +500,9 @@ function FAQSection() {
             >
               <div className="faq-question">
                 <h3>{faq.question}</h3>
-                <span className="faq-toggle">{activeIndex === index ? '−' : '+'}</span>
+                <span className="faq-toggle">
+                  <ChevronDown size={24} />
+                </span>
               </div>
               <div className="faq-answer">
                 <p>{faq.answer}</p>

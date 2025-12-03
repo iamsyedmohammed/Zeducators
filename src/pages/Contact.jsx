@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react'
+import toast from 'react-hot-toast'
 import './Contact.css'
+
+import SEO from '../components/SEO'
+import SuccessModal from '../components/SuccessModal'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,7 +13,28 @@ export default function Contact() {
     email: '',
     message: ''
   })
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Us",
+    "description": "Contact Zeducators",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Zeducators",
+      "telephone": "+91-9966002827",
+      "email": "info@zeducators.org",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hno 17-8-659/16, Chanchal Guda",
+        "addressLocality": "Hyderabad",
+        "postalCode": "500024",
+        "addressCountry": "IN"
+      }
+    }
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -18,12 +43,35 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 5000)
-    setFormData({ name: '', mobile: '', email: '', message: '' })
+    if (isSubmitting) return; // Prevent double submission
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setShowSuccessModal(true)
+        setFormData({ name: '', mobile: '', email: '', message: '' })
+      } else {
+        toast.error(data.message || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      toast.error('Something went wrong. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactDetails = [
@@ -55,6 +103,20 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Zeducators. Call us at +91 9966002827, email info@zeducators.org, or visit our center in Hyderabad."
+        canonical="/contact"
+        schema={contactSchema}
+      />
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="We have received your query. Our team will get back to you shortly."
+      />
+
       {/* Hero Section */}
 
 
@@ -102,73 +164,68 @@ export default function Contact() {
                 <p>Fill out the form below and we'll get back to you shortly.</p>
               </div>
 
-              {isSubmitted ? (
-                <div className="submission-success">
-                  <CheckCircle2 size={64} />
-                  <h4>Thank You!</h4>
-                  <p>Your message has been sent successfully.</p>
-                  <button onClick={() => setIsSubmitted(false)} className="btn-reset">Send Another</button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="modern-form">
-                  <div className="form-row">
-                    <div className="input-group">
-                      <label htmlFor="name">Full Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        required
-                      />
-                    </div>
-                    <div className="input-group">
-                      <label htmlFor="mobile">Mobile Number</label>
-                      <input
-                        type="tel"
-                        id="mobile"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        required
-                      />
-                    </div>
-                  </div>
-
+              <form onSubmit={handleSubmit} className="modern-form">
+                <div className="form-row">
                   <div className="input-group">
-                    <label htmlFor="email">Email Address</label>
+                    <label htmlFor="name">Full Name</label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="john@example.com"
+                      placeholder="John Doe"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
-
                   <div className="input-group">
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                    <label htmlFor="mobile">Mobile Number</label>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      value={formData.mobile}
                       onChange={handleChange}
-                      placeholder="How can we help you?"
-                      rows="5"
+                      placeholder="+91 98765 43210"
                       required
-                    ></textarea>
+                      disabled={isSubmitting}
+                    />
                   </div>
+                </div>
 
-                  <button type="submit" className="submit-btn">
-                    Send Message <Send size={18} />
-                  </button>
-                </form>
-              )}
+                <div className="input-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="How can we help you?"
+                    rows="5"
+                    required
+                    disabled={isSubmitting}
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={18} />
+                </button>
+              </form>
             </div>
 
           </div>

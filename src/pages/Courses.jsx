@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
   GraduationCap,
   Calculator,
@@ -24,9 +24,18 @@ import {
 } from 'lucide-react'
 import './Courses.css'
 
+import { courses } from '../data/courses'
+
+import SEO from '../components/SEO'
+
 export default function Courses() {
   return (
     <div className="courses-page">
+      <SEO
+        title="Our Courses"
+        description="Explore our wide range of courses including Academic Coaching, Competitive Exams (JEE/NEET), IT Skills, and Languages. Find the perfect path for your future."
+        canonical="/courses"
+      />
       <HeroSection />
       <CoursesSection />
       <WhyChooseSection />
@@ -64,7 +73,8 @@ function HeroSection() {
 }
 
 function CoursesSection() {
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeCategory = searchParams.get('category') || 'all'
 
   const categories = [
     { id: 'all', label: 'All Courses', icon: BookOpen },
@@ -73,359 +83,6 @@ function CoursesSection() {
     { id: 'it', label: 'IT & Coding', icon: Code },
     { id: 'language', label: 'Languages', icon: Languages },
     { id: 'management', label: 'Management', icon: Briefcase }
-  ]
-
-  const courses = [
-    // Academic Coaching
-    {
-      id: 1,
-      category: 'academic',
-      title: 'Tuition All Subjects',
-      subtitle: '11th – 12th Grade',
-      grade: '11th – 12th Grade',
-      description: 'Comprehensive coaching for all subjects with focus on board exam preparation and conceptual clarity.',
-      icon: GraduationCap,
-      duration: '10 months',
-      rating: 4.9,
-      students: '2000+',
-      color: 'blue',
-      features: ['CBSE/ICSE/State Boards', 'Regular Tests', 'Doubt Sessions'],
-      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'
-    },
-    {
-      id: 2,
-      category: 'academic',
-      title: 'Tuition All Subjects',
-      subtitle: '8th – 10th Grade',
-      grade: '8th – 10th Grade',
-      description: 'Strong foundation building with focus on concepts, problem-solving, and exam techniques.',
-      icon: BookOpen,
-      duration: '10 months',
-      rating: 4.8,
-      students: '3500+',
-      color: 'green',
-      features: ['All Boards', 'Weekly Assessments', 'Parent Connect'],
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80'
-    },
-    {
-      id: 3,
-      category: 'academic',
-      title: 'Tuition All Subjects',
-      subtitle: '1st – 7th Grade',
-      grade: '1st – 7th Grade',
-      description: 'Fun and engaging learning with activity-based teaching to develop curiosity and basic concepts.',
-      icon: Star,
-      duration: '10 months',
-      rating: 4.9,
-      students: '1800+',
-      color: 'amber',
-      features: ['Interactive Classes', 'Creative Learning', 'Progress Reports'],
-      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80'
-    },
-    {
-      id: 4,
-      category: 'academic',
-      title: 'Mathematics',
-      subtitle: '1st – 7th Grade',
-      grade: '1st – 7th Grade',
-      description: 'Building strong mathematical foundations through visual learning and practical problem-solving.',
-      icon: Calculator,
-      duration: 'Flexible',
-      rating: 4.8,
-      students: '1200+',
-      color: 'coral',
-      features: ['Mental Math', 'Vedic Mathematics', 'Fun Activities'],
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80'
-    },
-    {
-      id: 5,
-      category: 'academic',
-      title: 'Mathematics',
-      subtitle: '8th – 10th Grade',
-      grade: '8th – 10th Grade',
-      description: 'Comprehensive math coaching with focus on algebra, geometry, and board exam patterns.',
-      icon: Calculator,
-      duration: 'Flexible',
-      rating: 4.9,
-      students: '2500+',
-      color: 'coral',
-      features: ['Chapter-wise Tests', 'Formula Sheets', 'Practice Problems'],
-      image: 'https://images.unsplash.com/photo-1596495577886-d920f1fb7238?w=800&q=80'
-    },
-    {
-      id: 6,
-      category: 'academic',
-      title: 'Mathematics',
-      subtitle: '11th – 12th Grade',
-      grade: '11th – 12th Grade',
-      description: 'Advanced mathematics covering calculus, statistics, and competitive exam preparation.',
-      icon: Calculator,
-      duration: 'Flexible',
-      rating: 4.7,
-      students: '1500+',
-      color: 'coral',
-      features: ['IIT Foundation', 'Board + Competitive', 'Previous Papers'],
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80'
-    },
-    {
-      id: 7,
-      category: 'academic',
-      title: 'Science',
-      subtitle: '1st – 7th Grade',
-      grade: '1st – 7th Grade',
-      description: 'Exploring the wonders of science through experiments, demonstrations, and curiosity-driven learning.',
-      icon: FlaskConical,
-      duration: 'Flexible',
-      rating: 4.8,
-      students: '1000+',
-      color: 'green',
-      features: ['Lab Experiments', 'Science Projects', 'Visual Learning'],
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80'
-    },
-    {
-      id: 8,
-      category: 'academic',
-      title: 'Science',
-      subtitle: '8th – 10th Grade',
-      grade: '8th – 10th Grade',
-      description: 'In-depth coverage of Physics, Chemistry, and Biology with practical applications.',
-      icon: FlaskConical,
-      duration: 'Flexible',
-      rating: 4.9,
-      students: '2800+',
-      color: 'green',
-      features: ['PCB Combined', 'Practical Sessions', 'NCERT Based'],
-      image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80'
-    },
-    {
-      id: 9,
-      category: 'academic',
-      title: 'Biology',
-      subtitle: '11th & 12th Grade',
-      grade: '11th & 12th Grade',
-      description: 'Comprehensive biology coaching for board exams and NEET foundation.',
-      icon: Atom,
-      duration: 'Flexible',
-      rating: 4.8,
-      students: '900+',
-      color: 'purple',
-      features: ['NEET Oriented', 'Diagrams & Charts', 'NCERT Focus'],
-      image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16ba6?w=800&q=80'
-    },
-    {
-      id: 10,
-      category: 'academic',
-      title: 'Chemistry',
-      subtitle: '11th – 12th Grade',
-      grade: '11th – 12th Grade',
-      description: 'Master organic, inorganic, and physical chemistry with conceptual understanding.',
-      icon: FlaskConical,
-      duration: 'Flexible',
-      rating: 4.7,
-      students: '800+',
-      color: 'blue',
-      features: ['Organic Chemistry', 'Numericals', 'Reaction Mechanisms'],
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80'
-    },
-    // Competitive Exams
-    {
-      id: 11,
-      category: 'competitive',
-      title: 'JEE Main & Advanced',
-      subtitle: 'Engineering Entrance',
-      grade: 'Engineering Entrance',
-      description: 'Complete preparation for JEE with expert faculty, test series, and personalized guidance.',
-      icon: Target,
-      duration: '2 Years',
-      rating: 4.9,
-      students: '1500+',
-      color: 'coral',
-      features: ['Full Syllabus', 'Mock Tests', 'Rank Predictor'],
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80'
-    },
-    {
-      id: 12,
-      category: 'competitive',
-      title: 'NEET Preparation',
-      subtitle: 'Medical Entrance',
-      grade: 'Medical Entrance',
-      description: 'Focused NEET coaching with Biology emphasis and comprehensive PCB coverage.',
-      icon: Target,
-      duration: '2 Years',
-      rating: 4.9,
-      students: '1200+',
-      color: 'green',
-      features: ['NCERT Master', 'Test Series', 'Expert Faculty'],
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80'
-    },
-    {
-      id: 13,
-      category: 'competitive',
-      title: 'EAMCET Coaching',
-      subtitle: 'State Engineering/Medical',
-      grade: 'State Engineering/Medical',
-      description: 'Tailored preparation for EAMCET with focus on state-specific patterns.',
-      icon: Target,
-      duration: '1 Year',
-      rating: 4.8,
-      students: '800+',
-      color: 'blue',
-      features: ['State Syllabus', 'Previous Papers', 'Success Formula'],
-      image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80'
-    },
-    {
-      id: 14,
-      category: 'competitive',
-      title: 'CUET Preparation',
-      subtitle: 'Central University Entrance',
-      grade: 'Central University Entrance',
-      description: 'Complete CUET coaching for arts, commerce, and science streams.',
-      icon: Target,
-      duration: '6 Months',
-      rating: 4.7,
-      students: '600+',
-      color: 'amber',
-      features: ['All Streams', 'General Test', 'Domain Subjects'],
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80'
-    },
-    // IT & Coding
-    {
-      id: 15,
-      category: 'it',
-      title: 'Python Programming',
-      subtitle: 'Beginner to Advanced',
-      grade: 'Beginner to Advanced',
-      description: 'Learn Python from scratch with hands-on projects and real-world applications.',
-      icon: Code,
-      duration: '4 Months',
-      rating: 4.9,
-      students: '2000+',
-      color: 'blue',
-      features: ['Live Projects', 'Certificate', 'Placement Support'],
-      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4a18d5d?w=800&q=80'
-    },
-    {
-      id: 16,
-      category: 'it',
-      title: 'Web Development',
-      subtitle: 'Full Stack',
-      grade: 'Full Stack',
-      description: 'Master HTML, CSS, JavaScript, React, and backend technologies.',
-      icon: Code,
-      duration: '6 Months',
-      rating: 4.8,
-      students: '1500+',
-      color: 'coral',
-      features: ['Frontend + Backend', 'Portfolio Projects', 'Industry Ready'],
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80'
-    },
-    {
-      id: 17,
-      category: 'it',
-      title: 'Coding for Kids',
-      subtitle: 'Age 8-14',
-      grade: 'Age 8-14',
-      description: 'Fun introduction to programming with Scratch, Python basics, and logic building.',
-      icon: Code,
-      duration: '3 Months',
-      rating: 4.9,
-      students: '800+',
-      color: 'green',
-      features: ['Game Development', 'Creative Coding', 'Problem Solving'],
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80'
-    },
-    // Language Learning
-    {
-      id: 18,
-      category: 'language',
-      title: 'Spoken English',
-      subtitle: 'Fluency Program',
-      grade: 'Fluency Program',
-      description: 'Develop confidence in spoken English with regular practice and conversation sessions.',
-      icon: Languages,
-      duration: '3 Months',
-      rating: 4.8,
-      students: '3000+',
-      color: 'purple',
-      features: ['Daily Practice', 'Accent Training', 'Group Discussions'],
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80'
-    },
-    {
-      id: 19,
-      category: 'language',
-      title: 'Grammar Mastery',
-      subtitle: 'Foundation to Advanced',
-      grade: 'Foundation to Advanced',
-      description: 'Strong grammar foundation with focus on writing skills and error correction.',
-      icon: Languages,
-      duration: '2 Months',
-      rating: 4.7,
-      students: '1500+',
-      color: 'blue',
-      features: ['Writing Skills', 'Error Analysis', 'Practice Exercises'],
-      image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80'
-    },
-    {
-      id: 20,
-      category: 'language',
-      title: 'Communication Skills',
-      subtitle: 'Professional Development',
-      grade: 'Professional Development',
-      description: 'Enhance presentation, public speaking, and professional communication abilities.',
-      icon: MessageCircle,
-      duration: '2 Months',
-      rating: 4.8,
-      students: '1000+',
-      color: 'coral',
-      features: ['Public Speaking', 'Presentations', 'Interview Prep'],
-      image: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=800&q=80'
-    },
-    // Management
-    {
-      id: 21,
-      category: 'management',
-      title: 'Business Basics',
-      subtitle: 'Foundation Course',
-      grade: 'Foundation Course',
-      description: 'Introduction to business concepts, finance basics, and entrepreneurial thinking.',
-      icon: Briefcase,
-      duration: '2 Months',
-      rating: 4.6,
-      students: '500+',
-      color: 'amber',
-      features: ['Case Studies', 'Business Plans', 'Financial Literacy'],
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'
-    },
-    {
-      id: 22,
-      category: 'management',
-      title: 'Entrepreneurship',
-      subtitle: 'Startup Ready',
-      grade: 'Startup Ready',
-      description: 'Learn to build, launch, and grow your own business idea with practical guidance.',
-      icon: Briefcase,
-      duration: '3 Months',
-      rating: 4.7,
-      students: '400+',
-      color: 'green',
-      features: ['Ideation', 'MVP Building', 'Pitch Deck'],
-      image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80'
-    },
-    {
-      id: 23,
-      category: 'management',
-      title: 'Soft Skills',
-      subtitle: 'Career Ready',
-      grade: 'Career Ready',
-      description: 'Develop leadership, teamwork, time management, and professional etiquette.',
-      icon: Users,
-      duration: '1 Month',
-      rating: 4.8,
-      students: '700+',
-      color: 'purple',
-      features: ['Leadership', 'Team Building', 'Time Management'],
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
-    }
   ]
 
   const filteredCourses = activeCategory === 'all'
@@ -441,7 +98,7 @@ function CoursesSection() {
             <button
               key={cat.id}
               className={`filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => setSearchParams(cat.id === 'all' ? {} : { category: cat.id })}
             >
               <cat.icon size={18} />
               <span>{cat.label}</span>
@@ -469,10 +126,10 @@ function CoursesSection() {
                   <h3>{course.title}</h3>
                   <p className="course-grade">{course.grade || course.subtitle}</p>
                 </div>
-                <button className="course-read-more">
+                <Link to={`/courses/${course.slug}`} className="course-read-more">
                   <span>Read more</span>
                   <ArrowRight size={20} />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

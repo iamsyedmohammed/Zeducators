@@ -1,6 +1,8 @@
 import React from 'react'
 import './Gallery.css'
 
+import SEO from '../components/SEO'
+
 export default function Gallery() {
     const images = [
         { id: 1, src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Students learning' },
@@ -13,6 +15,11 @@ export default function Gallery() {
 
     return (
         <div className="gallery-page">
+            <SEO
+                title="Gallery"
+                description="View photos of our classrooms, events, and student life at Zeducators."
+                canonical="/gallery"
+            />
             <div className="container">
                 <div className="section-header text-center">
                     <h2>Our Gallery</h2>
