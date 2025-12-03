@@ -91,6 +91,25 @@ export default function Header() {
               </li>
             ))}
           </ul>
+          <div className="mobile-menu-footer">
+            <div className="mobile-contact">
+              <a href="tel:+919966002827" className="mobile-contact-item">
+                <Phone size={18} />
+                <span>+91 9966002827</span>
+              </a>
+              <a href="mailto:info@zeducators.org" className="mobile-contact-item">
+                <Mail size={18} />
+                <span>info@zeducators.org</span>
+              </a>
+            </div>
+            <div className="mobile-social">
+              <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
+              <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
+              <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
+              <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="#" aria-label="YouTube"><Youtube size={20} /></a>
+            </div>
+          </div>
         </nav>
 
         <div className="header-actions">

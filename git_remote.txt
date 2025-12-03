@@ -1,0 +1,2 @@
+﻿origin	git@github.com:iamsyedmohammed/Zeducators.git (fetch)
+origin	git@github.com:iamsyedmohammed/Zeducators.git (push)

@@ -155,7 +155,7 @@ h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-400) 100%);
+  background: linear-gradient(135deg, var(--color-golden-brown) 0%, var(--color-deep-brownish-yellow) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -182,7 +182,7 @@ h6 {
 
 .btn-primary {
   background: var(--btn-bg);
-  color: var(--color-light-beige);
+  color: #ffffff;
   box-shadow: var(--shadow-accent);
 }
 
@@ -458,7 +458,7 @@ h6 {
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -466,12 +466,9 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-400);
+  background: var(--color-golden-brown);
   border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-500);
+  border: 3px solid var(--neutral-100);
 }
 
 /* ===== SELECTION ===== */

@@ -5,7 +5,7 @@
 
 /* Newsletter Section */
 .footer-newsletter {
-  background: var(--gradient-primary);
+  background: #466548;
   padding: var(--space-3xl) 0;
 }
 
@@ -30,12 +30,14 @@
 
 .newsletter-content .btn-primary {
   background: var(--white);
-  color: var(--primary-700);
+  color: #466548;
   box-shadow: var(--shadow-lg);
+  border: none;
 }
 
 .newsletter-content .btn-primary:hover {
-  background: var(--neutral-50);
+  background: var(--color-light-beige);
+  color: #466548;
   transform: translateY(-2px);
 }
 

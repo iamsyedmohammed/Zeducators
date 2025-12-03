@@ -55,11 +55,11 @@ export default function TestimonialsSection() {
                     <p>Join thousands of successful learners who transformed their academic journey with us</p>
                 </div>
                 <div className="testimonials-grid">
-                    {testimonials.map((testimonial, index) => (
+                    {testimonials.slice(0, 3).map((testimonial, index) => (
                         <div key={index} className="testimonial-card card">
                             <div className="testimonial-rating">
                                 {[...Array(testimonial.rating)].map((_, i) => (
-                                    <Star key={i} size={16} fill="currentColor" />
+                                    <Star key={i} size={24} fill="currentColor" />
                                 ))}
                             </div>
                             <p className="testimonial-quote">"{testimonial.quote}"</p>

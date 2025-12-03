@@ -49,14 +49,14 @@ function HeroSection() {
             Explore Our <span className="text-gradient">Courses</span>
           </h1>
           <p className="animate-fade-in-up stagger-2">
-            Academic, competitive, and skill-based courses designed to build 
+            Academic, competitive, and skill-based courses designed to build
             strong foundations and future-ready learners.
           </p>
         </div>
       </div>
       <div className="courses-hero-wave">
         <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
-          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" fill="white"/>
+          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" fill="#c9c9bf" />
         </svg>
       </div>
     </section>
@@ -65,7 +65,7 @@ function HeroSection() {
 
 function CoursesSection() {
   const [activeCategory, setActiveCategory] = useState('all')
-  
+
   const categories = [
     { id: 'all', label: 'All Courses', icon: BookOpen },
     { id: 'academic', label: 'Academic', icon: GraduationCap },
@@ -428,8 +428,8 @@ function CoursesSection() {
     }
   ]
 
-  const filteredCourses = activeCategory === 'all' 
-    ? courses 
+  const filteredCourses = activeCategory === 'all'
+    ? courses
     : courses.filter(course => course.category === activeCategory)
 
   return (
@@ -544,16 +544,16 @@ function WhyChooseSection() {
 
 function CTASection() {
   return (
-    <section className="courses-cta section-dark">
+    <section className="courses-cta">
       <div className="container">
-        <div className="cta-content">
-          <h2>Ready to Start <span className="text-gradient">Learning?</span></h2>
+        <div className="cta-box">
+          <h2>Ready to Start Learning?</h2>
           <p>Get a free demo class and experience the Zeducators difference.</p>
-          <div className="cta-actions">
-            <Link to="/contact" className="btn btn-primary">
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn btn-primary-inverse">
               Book Free Demo <ArrowRight size={18} />
             </Link>
-            <a href="tel:+919966002827" className="btn btn-outline">
+            <a href="tel:+919966002827" className="btn btn-outline-inverse">
               Call +91 9966002827
             </a>
           </div>

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
   Youtube,
   ArrowRight,
   Heart
@@ -40,7 +40,7 @@ export default function Footer() {
             {/* Brand Column */}
             <div className="footer-brand">
               <p className="footer-tagline">
-                Where Future Achievers Begin Their Journey. Empowering students through 
+                Where Future Achievers Begin Their Journey. Empowering students through
                 quality instruction, innovative teaching, and personalized learning in STEM+M.
               </p>
               <div className="footer-social">
@@ -111,7 +111,7 @@ export default function Footer() {
                 <li>
                   <MapPin size={18} />
                   <div>
-                    <a 
+                    <a
                       href="https://www.google.com/maps/place/Zeducators/@17.3642427,78.4901757,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb996cc9f4b0f3:0x8e45ab6af87c6628!8m2!3d17.3642427!4d78.4901757!16s%2Fg%2F11v0q8q8q8"
                       target="_blank"
                       rel="noopener noreferrer"

@@ -38,24 +38,23 @@ function HeroSection() {
   return (
     <section className="about-hero section-dark">
       <div className="about-hero-bg">
-        <div className="hero-gradient-orb orb-1"></div>
-        <div className="hero-gradient-orb orb-2"></div>
+        {/* Background pattern or subtle elements can go here via CSS */}
       </div>
       <div className="container">
         <div className="about-hero-content">
           <span className="badge animate-fade-in-up">About Zeducators</span>
           <h1 className="animate-fade-in-up stagger-1">
-            Join Our Community of Learners and Start Your Journey Towards <span className="text-gradient">Success</span>
+            Empowering Minds, <span className="text-gradient">Shaping Futures</span>
           </h1>
           <p className="animate-fade-in-up stagger-2">
-            We're on a mission to transform education and empower every student 
-            with the skills and knowledge they need to succeed in the modern world.
+            We are a community dedicated to transforming education through innovation,
+            inclusivity, and excellence. Join us in redefining how the world learns.
           </p>
         </div>
       </div>
       <div className="about-hero-wave">
         <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
-          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" fill="white"/>
+          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z" fill="#c9c9bf" />
         </svg>
       </div>
     </section>
@@ -67,44 +66,47 @@ function WhoWeAreSection() {
     <section className="who-section section">
       <div className="container">
         <div className="who-grid">
-          <div className="who-image">
-            <div className="image-main">
-              <div className="image-overlay">
-                <GraduationCap size={64} />
-              </div>
-            </div>
-          </div>
           <div className="who-content">
             <span className="badge">Who We Are</span>
-            <h2>Empowering Students Through <span className="text-gradient">Quality Education</span></h2>
+            <h2>Redefining Education for the <span className="text-gradient">Modern Era</span></h2>
             <p className="lead">
-              Zeducators is a dynamic educational initiative committed to empowering students 
-              through quality instruction, innovative teaching methods, and personalized learning 
-              experiences in <strong>STEM+M</strong> (Science, Technology, Engineering, Mathematics + Management) 
-              and language skills.
+              Zeducators is more than just an educational platform; it's a movement.
+              We are committed to bridging the gap between traditional learning and
+              future-ready skills, focusing on <strong>STEM+M</strong> and holistic development.
             </p>
             <p>
-              We believe every learner is unique. That's why we focus on interactive classrooms, 
-              curated resources, and regular assessments to ensure concept clarity and exam readiness. 
-              Our approach combines the best of traditional teaching excellence with modern educational 
-              technology.
+              Our philosophy is simple: every student deserves access to high-quality,
+              personalized education. By combining expert mentorship with cutting-edge
+              technology, we create learning environments that inspire curiosity and
+              foster growth.
             </p>
             <div className="who-features">
               <div className="who-feature">
-                <BookOpen size={20} />
-                <span>Interactive Classrooms</span>
+                <div className="feature-icon"><BookOpen size={20} /></div>
+                <span>Interactive Learning</span>
               </div>
               <div className="who-feature">
-                <Target size={20} />
-                <span>Curated Resources</span>
+                <div className="feature-icon"><Target size={20} /></div>
+                <span>Curated Pathways</span>
               </div>
               <div className="who-feature">
-                <Award size={20} />
-                <span>Regular Assessments</span>
+                <div className="feature-icon"><Award size={20} /></div>
+                <span>Skill Mastery</span>
               </div>
               <div className="who-feature">
-                <Users size={20} />
-                <span>Expert Mentoring</span>
+                <div className="feature-icon"><Users size={20} /></div>
+                <span>Expert Mentors</span>
+              </div>
+            </div>
+          </div>
+          <div className="who-image-wrapper">
+            <div className="who-image">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Students learning" />
+              <div className="image-overlay-content">
+                <div className="stat-card">
+                  <span className="stat-number">5k+</span>
+                  <span className="stat-label">Students Impacted</span>
+                </div>
               </div>
             </div>
           </div>
@@ -116,30 +118,34 @@ function WhoWeAreSection() {
 
 function VisionMissionSection() {
   return (
-    <section className="vision-mission section section-alt">
+    <section className="vision-mission section">
       <div className="container">
         <div className="vm-grid">
-          <div className="vm-card vision-card">
-            <div className="vm-icon">
+          <div className="vm-card vision">
+            <div className="vm-icon-wrapper">
               <Sparkles size={32} />
             </div>
-            <h3>Our Vision</h3>
-            <p>
-              To empower every learner with quality education, innovative technology, 
-              and personalized guidance for a successful future. We envision a world 
-              where quality education knows no boundaries.
-            </p>
-          </div>
-          <div className="vm-card mission-card">
-            <div className="vm-icon">
-              <Target size={32} />
+            <div className="vm-content">
+              <h3>Our Vision</h3>
+              <p>
+                To create a world where quality education is accessible to all,
+                empowering individuals to reach their full potential and contribute
+                meaningfully to society.
+              </p>
             </div>
-            <h3>Our Mission</h3>
-            <p>
-              To deliver high-quality, affordable, and accessible education through 
-              expert faculty, modern teaching tools, and personalized mentoring. 
-              We're committed to nurturing future leaders and innovators.
-            </p>
+          </div>
+          <div className="vm-card mission">
+            <div className="vm-icon-wrapper">
+              <Rocket size={32} />
+            </div>
+            <div className="vm-content">
+              <h3>Our Mission</h3>
+              <p>
+                To provide affordable, high-quality education through innovative
+                teaching methods, expert faculty, and a supportive community that
+                nurtures lifelong learners.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -149,20 +155,20 @@ function VisionMissionSection() {
 
 function FounderSection() {
   return (
-    <section className="founder section">
+    <section className="founder section section-alt">
       <div className="container">
-        <div className="founder-content">
-          <div className="founder-quote-wrapper">
+        <div className="founder-wrapper">
+          <div className="founder-quote-container">
             <Quote size={48} className="quote-icon" />
             <blockquote className="founder-quote">
-              "Education is not just about knowledge, it's about relevance, reach, and results. 
-              At Zeducators, we believe that learning should be human-centric, inclusive, and future-proof."
+              "Education is the most powerful weapon which you can use to change the world.
+              At Zeducators, we strive to wield this power with responsibility, creativity,
+              and compassion."
             </blockquote>
-            <div className="founder-info">
-              <div className="founder-avatar">F</div>
-              <div>
-                <h4>Founder's Message</h4>
-                <span>Zeducators Leadership Team</span>
+            <div className="founder-signature">
+              <div className="founder-details">
+                <h4>Leadership Team</h4>
+                <span>Zeducators</span>
               </div>
             </div>
           </div>
@@ -176,52 +182,55 @@ function TimelineSection() {
   const timeline = [
     {
       year: '2019',
-      title: 'The Spark',
-      description: 'We questioned why quality education was still a privilege. The idea of democratizing education was born.',
+      title: 'Inception',
+      description: 'The idea of Zeducators was conceived to address the gaps in accessible quality education.',
       icon: Lightbulb
     },
     {
       year: '2020',
-      title: 'Zeducators is Born',
-      description: 'Launched our platform to reimagine learning, making it inclusive and digital-first for all students.',
+      title: 'Launch',
+      description: 'We launched our digital platform, reaching our first cohort of eager learners.',
       icon: Rocket
     },
     {
       year: '2021',
-      title: 'First Impact',
-      description: 'Reached 5,000+ learners across urban and rural India, proving that geography is no barrier to learning.',
-      icon: Users
+      title: 'Growth',
+      description: 'Expanded our course offerings and grew our community to over 5,000 students.',
+      icon: TrendingUp
     },
     {
       year: '2023',
-      title: 'Scaling with Technology',
-      description: 'Introduced AI-driven learning tools and formed institutional collaborations to amplify our reach.',
+      title: 'Innovation',
+      description: 'Integrated AI-driven tools to personalize the learning experience for every student.',
       icon: Zap
     }
   ]
 
   return (
-    <section className="timeline section section-alt">
+    <section className="timeline section">
       <div className="container">
         <div className="section-header">
           <span className="badge">Our Journey</span>
-          <h2>The <span className="text-gradient">Zeducators</span> Story</h2>
-          <p>From a simple question to transforming millions of lives through education</p>
+          <h2>The <span className="text-gradient">Path We've Traveled</span></h2>
+          <p>A timeline of our milestones and the impact we've made along the way.</p>
         </div>
-        <div className="timeline-wrapper">
+        <div className="timeline-container">
           <div className="timeline-line"></div>
-          <div className="timeline-items">
-            {timeline.map((item, index) => (
-              <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-                <div className="timeline-content">
-                  <span className="timeline-year">{item.year}</span>
+          {timeline.map((item, index) => (
+            <div key={index} className={`timeline-row ${index % 2 === 0 ? 'left' : 'right'}`}>
+              <div className="timeline-content-wrapper">
+                <div className="timeline-date">{item.year}</div>
+                <div className="timeline-card">
+                  <div className="timeline-icon-box">
+                    <item.icon size={20} />
+                  </div>
+                  <span className="timeline-year-badge">{item.year}</span>
                   <h4>{item.title}</h4>
                   <p>{item.description}</p>
                 </div>
-                <div className="timeline-dot"></div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -233,41 +242,37 @@ function ValuesSection() {
     {
       icon: Globe,
       title: 'Inclusivity',
-      description: 'Education for everyone, regardless of background or location. We break barriers to make learning accessible.',
-      color: 'blue'
+      description: 'Breaking barriers to make education accessible to everyone, everywhere.'
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
-      description: 'Constantly evolving our teaching methods and technology to provide the best learning experience.',
-      color: 'coral'
+      description: 'Embracing new technologies and methods to enhance learning outcomes.'
     },
     {
       icon: Heart,
       title: 'Integrity',
-      description: 'Honest, transparent, and ethical in everything we do. Trust is the foundation of education.',
-      color: 'green'
+      description: 'Upholding the highest standards of honesty and ethics in all our interactions.'
     },
     {
-      icon: TrendingUp,
-      title: 'Impact',
-      description: 'Measured by the success of our students. Every decision we make is driven by student outcomes.',
-      color: 'amber'
+      icon: Target,
+      title: 'Excellence',
+      description: 'Striving for the highest quality in our content, teaching, and support.'
     }
   ]
 
   return (
-    <section className="values section">
+    <section className="values section section-alt">
       <div className="container">
         <div className="section-header">
-          <span className="badge">Our Core Values</span>
-          <h2>What <span className="text-gradient">Drives Us</span></h2>
-          <p>The principles that guide every decision we make at Zeducators</p>
+          <span className="badge">Our Values</span>
+          <h2>What We <span className="text-gradient">Stand For</span></h2>
+          <p>The core principles that guide our mission and culture.</p>
         </div>
         <div className="values-grid">
           {values.map((value, index) => (
-            <div key={index} className={`value-card card ${value.color}`}>
-              <div className={`value-icon ${value.color}`}>
+            <div key={index} className="value-card">
+              <div className="value-icon-wrapper">
                 <value.icon size={28} />
               </div>
               <h3>{value.title}</h3>
@@ -284,50 +289,49 @@ function ApproachSection() {
   const approaches = [
     {
       icon: Users,
-      title: 'Learner-Centric Design',
-      description: 'Every course, feature, and interaction is designed with the student at the center.'
-    },
-    {
-      icon: BookOpen,
-      title: 'Blended Learning',
-      description: 'Combining the best of online and offline modes for flexible, effective learning.'
-    },
-    {
-      icon: Target,
-      title: 'Outcome-Based Paths',
-      description: 'Structured learning journeys designed to achieve specific academic and career goals.'
+      title: 'Student-Centric',
+      description: 'We design every aspect of our curriculum with the student\'s needs in mind.'
     },
     {
       icon: Handshake,
-      title: 'Strategic Partnerships',
-      description: 'Collaborating with institutions and industry to provide real-world relevance.'
+      title: 'Collaborative',
+      description: 'We believe in the power of community and peer-to-peer learning.'
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Result-Oriented',
+      description: 'Our focus is on tangible outcomes and real-world skill application.'
     }
   ]
 
   return (
-    <section className="approach section section-alt">
+    <section className="approach section">
       <div className="container">
-        <div className="approach-header">
-          <span className="badge">Our Approach</span>
-          <h2>How We <span className="text-gradient">Transform Learning</span></h2>
-          <p>
-            Our methodology is built on understanding how students learn best and 
-            creating experiences that make education engaging, effective, and enjoyable.
-          </p>
-        </div>
-        <div className="approach-grid">
-          {approaches.map((item, index) => (
-            <div key={index} className="approach-item">
-              <div className="approach-icon">
-                <item.icon size={24} />
+        <div className="approach-wrapper">
+          <div className="approach-header-side">
+            <span className="badge">Our Approach</span>
+            <h2>Methodology for <span className="text-gradient">Success</span></h2>
+            <p>
+              We combine traditional pedagogical wisdom with modern technology to create
+              a learning experience that is both effective and engaging.
+            </p>
+            <Link to="/courses" className="btn btn-primary">
+              View Our Courses <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="approach-cards-side">
+            {approaches.map((item, index) => (
+              <div key={index} className="approach-card-horizontal">
+                <div className="approach-icon-box">
+                  <item.icon size={24} />
+                </div>
+                <div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
               </div>
-              <div className="approach-text">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-              </div>
-              <CheckCircle2 size={20} className="approach-check" />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -336,16 +340,16 @@ function ApproachSection() {
 
 function CTASection() {
   return (
-    <section className="about-cta section-dark">
+    <section className="about-cta">
       <div className="container">
-        <div className="cta-content">
-          <h2>Ready to Begin Your <span className="text-gradient">Learning Journey?</span></h2>
-          <p>Join thousands of students who are already transforming their futures with Zeducators.</p>
-          <div className="cta-actions">
-            <Link to="/courses" className="btn btn-primary">
-              Explore Courses <ArrowRight size={18} />
+        <div className="cta-box">
+          <h2>Ready to Start Learning?</h2>
+          <p>Join Zeducators today and take the first step towards a brighter future.</p>
+          <div className="cta-buttons">
+            <Link to="/courses" className="btn btn-primary-inverse">
+              Get Started
             </Link>
-            <Link to="/contact" className="btn btn-outline">
+            <Link to="/contact" className="btn btn-outline-inverse">
               Contact Us
             </Link>
           </div>
