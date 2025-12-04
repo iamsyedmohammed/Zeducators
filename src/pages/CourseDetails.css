@@ -526,18 +526,219 @@
         gap: 4px;
     }
 
-    .related-grid {
-        grid-template-columns: 1fr;
+    .related-card-new {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .related-card-new:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .related-image-new {
+        position: relative;
+        height: 180px;
+        overflow: hidden;
+    }
+
+    .related-image-new img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+
+    .related-card-new:hover .related-image-new img {
+        transform: scale(1.1);
+    }
+
+    .related-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--neutral-900);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .related-content-new {
+        padding: var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .related-content-new h4 {
+        font-size: 1.1rem;
+        color: var(--neutral-900);
+        margin-bottom: var(--space-xs);
+        line-height: 1.4;
+    }
+
+    .related-grade {
+        font-size: 0.9rem;
+        color: var(--neutral-500);
+        margin-bottom: var(--space-md);
+    }
+
+    .related-footer {
+        margin-top: auto;
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--neutral-100);
+    }
+
+    .read-more-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--color-golden-brown);
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: gap 0.2s;
+    }
+
+    .related-card-new:hover .read-more-link {
+        gap: 10px;
+    }
+
+    /* CTA Section */
+    .course-cta-section {
+        margin-top: var(--space-4xl);
+    }
+
+    .cta-banner {
+        background-color: #7f6c2a;
+        /* Brand Brown */
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        border-radius: 30px;
+        padding: 60px 40px;
+        text-align: center;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-lg);
+    }
+
+    .cta-banner h2 {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        color: var(--white);
+        margin: 0;
+    }
+
+    .cta-banner p {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
     }
 
     .cta-action-buttons {
-        flex-direction: column;
-        width: 100%;
+        display: flex;
+        gap: var(--space-md);
+        margin-top: var(--space-md);
     }
 
-    .btn-white,
-    .btn-outline-white {
-        width: 100%;
-        justify-content: center;
+    .btn-white {
+        background: var(--white);
+        color: #7f6c2a;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
     }
-}
+
+    .btn-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-outline-white {
+        background: transparent;
+        border: 1px solid var(--white);
+        color: var(--white);
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+    }
+
+    .btn-outline-white:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Enroll Action */
+    .enroll-action {
+        margin-top: var(--space-lg);
+    }
+
+    .btn-lg {
+        padding: 12px 32px;
+        font-size: 1.1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .related-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .product-section {
+            grid-template-columns: 1fr;
+            padding: var(--space-lg);
+            gap: var(--space-xl);
+        }
+
+        .product-image-wrapper {
+            aspect-ratio: 16/9;
+        }
+
+        .highlight-item {
+            grid-template-columns: 1fr;
+            gap: 4px;
+        }
+
+        .related-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-action-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn-white,
+        .btn-outline-white {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+        }
+    }
