@@ -78,11 +78,11 @@ export default function Footer() {
             <div className="footer-links">
               <h4>Our Courses</h4>
               <ul>
-                <li><Link to="/courses">Academic Coaching</Link></li>
-                <li><Link to="/courses">JEE & NEET Prep</Link></li>
-                <li><Link to="/courses">IT & Coding</Link></li>
-                <li><Link to="/courses">Language Learning</Link></li>
-                <li><Link to="/courses">Management Skills</Link></li>
+                <li><Link to="/courses?category=academic">Academic Coaching</Link></li>
+                <li><Link to="/courses?category=competitive">JEE & NEET Prep</Link></li>
+                <li><Link to="/courses?category=it">IT & Coding</Link></li>
+                <li><Link to="/courses?category=language">Language Learning</Link></li>
+                <li><Link to="/courses?category=management">Management Skills</Link></li>
               </ul>
             </div>
 

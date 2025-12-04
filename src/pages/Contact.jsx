@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react'
 import toast from 'react-hot-toast'
+import { courses } from '../data/courses'
 import './Contact.css'
 
 import SEO from '../components/SEO'
@@ -11,6 +12,7 @@ export default function Contact() {
     name: '',
     mobile: '',
     email: '',
+    course: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -37,9 +39,18 @@ export default function Contact() {
   }
 
   const handleChange = (e) => {
+    const { name, value } = e.target
+
+    if (name === 'mobile') {
+      // Only allow numbers
+      if (!/^\d*$/.test(value)) return
+      // Max length 10
+      if (value.length > 10) return
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     })
   }
 
@@ -62,7 +73,7 @@ export default function Contact() {
 
       if (response.ok && data.success) {
         setShowSuccessModal(true)
-        setFormData({ name: '', mobile: '', email: '', message: '' })
+        setFormData({ name: '', mobile: '', email: '', course: '', message: '' })
       } else {
         toast.error(data.message || 'Failed to send message. Please try again.')
       }
@@ -82,10 +93,22 @@ export default function Contact() {
       link: 'tel:+919966002827'
     },
     {
+      icon: Phone,
+      label: 'Phone Number',
+      value: '+91 9876543210',
+      link: 'tel:+919876543210'
+    },
+    {
       icon: Mail,
       label: 'Email Address',
       value: 'info@zeducators.org',
       link: 'mailto:info@zeducators.org'
+    },
+    {
+      icon: Mail,
+      label: 'Email Address',
+      value: 'contact@zeducators.org',
+      link: 'mailto:contact@zeducators.org'
     },
     {
       icon: MapPin,
@@ -165,20 +188,21 @@ export default function Contact() {
               </div>
 
               <form onSubmit={handleSubmit} className="modern-form">
+                <div className="input-group">
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+
                 <div className="form-row">
-                  <div className="input-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="John Doe"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
                   <div className="input-group">
                     <label htmlFor="mobile">Mobile Number</label>
                     <input
@@ -187,7 +211,22 @@ export default function Contact() {
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleChange}
-                      placeholder="+91 98765 43210"
+                      placeholder="9876543210"
+                      required
+                      disabled={isSubmitting}
+                      pattern="[0-9]{10}"
+                      maxLength="10"
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="john@example.com"
                       required
                       disabled={isSubmitting}
                     />
@@ -195,17 +234,22 @@ export default function Contact() {
                 </div>
 
                 <div className="input-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                  <label htmlFor="course">Interested Course</label>
+                  <select
+                    id="course"
+                    name="course"
+                    value={formData.course}
                     onChange={handleChange}
-                    placeholder="john@example.com"
-                    required
                     disabled={isSubmitting}
-                  />
+                    className={!formData.course ? 'placeholder-shown' : ''}
+                  >
+                    <option value="">Select a course</option>
+                    {courses.map(course => (
+                      <option key={course.id} value={`${course.title} (${course.grade})`}>
+                        {course.title} ({course.grade})
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="input-group">

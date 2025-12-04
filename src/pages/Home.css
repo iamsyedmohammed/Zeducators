@@ -123,9 +123,80 @@
   }
 }
 
+/* ===== AFFILIATIONS SECTION ===== */
+.affiliations-section {
+  background: var(--white);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+.affiliations-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4xl);
+  flex-wrap: wrap;
+}
+
+.affiliation-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.affiliation-icon-box {
+  width: 48px;
+  height: 48px;
+  background: rgba(127, 108, 42, 0.1);
+  /* Brand Brown tint */
+  color: var(--color-golden-brown);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.affiliation-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.affiliation-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neutral-500);
+  font-weight: 600;
+}
+
+.affiliation-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-deep-brownish-yellow);
+}
+
+.affiliation-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--neutral-200);
+}
+
+@media (max-width: 768px) {
+  .affiliations-wrapper {
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+    /* Centered for mobile */
+  }
+
+  .affiliation-divider {
+    display: none;
+  }
+}
+
 /* ===== CATEGORIES SECTION ===== */
 .categories {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
   background: var(--white);
 }
 
@@ -232,7 +303,7 @@
 /* ===== FEATURED COURSES ===== */
 .featured-courses {
   background: var(--color-light-beige);
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .featured-grid {
@@ -338,7 +409,7 @@
 /* ===== WHY CHOOSE ===== */
 .why-choose {
   background: var(--white);
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .features-grid {
@@ -393,7 +464,7 @@
 
 /* ===== ABOUT PREVIEW ===== */
 .about-preview {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
   background: var(--white);
 }
 
@@ -491,7 +562,7 @@
 /* ===== TESTIMONIALS ===== */
 .testimonials {
   background: var(--white);
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .testimonials-grid {
@@ -568,7 +639,7 @@
 /* ===== FAQ SECTION ===== */
 .faq {
   background: var(--color-light-beige);
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .faq-list {

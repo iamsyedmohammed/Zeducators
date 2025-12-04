@@ -11,7 +11,8 @@ import {
     Users,
     BookOpen,
     Monitor,
-    GraduationCap
+    GraduationCap,
+    Target
 } from 'lucide-react'
 import { courses } from '../data/courses'
 import './CourseDetails.css'
@@ -122,84 +123,120 @@ export default function CourseDetails() {
                     </div>
                 </div>
 
-                {/* Tabs Section */}
-                <div className="course-tabs">
-                    <div className="tabs-header">
-                        <button
-                            className={`tab-btn ${activeTab === 'description' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('description')}
-                        >
-                            Description
-                        </button>
-                    </div>
+                {/* Content Section */}
+                <div className="course-content-wrapper">
+                    <div className="content-main">
+                        {/* About Course */}
+                        <section className="content-block">
+                            <h2 className="section-title">
+                                <GraduationCap className="icon" size={24} />
+                                About This Course
+                            </h2>
+                            <div className="description-text">
+                                {course.fullDescription ? (
+                                    course.fullDescription.split('\n\n').map((paragraph, idx) => (
+                                        <p key={idx}>{paragraph}</p>
+                                    ))
+                                ) : (
+                                    <p>{course.description}</p>
+                                )}
+                            </div>
+                        </section>
 
-                    <div className="tab-content">
-                        {activeTab === 'description' && (
-                            <div className="description-content">
-                                <h2><GraduationCap className="inline-icon" size={28} /> Class 11–12 All Subjects In-Class Tuition Program | Zeducators</h2>
-
-                                <p>{course.fullDescription || course.description}</p>
-
-                                <p>Whether you're preparing for board exams or competitive entrance tests, our comprehensive curriculum, doubt-clearing sessions, and personalized guidance ensure your academic success across <strong>Physics, Chemistry, Math, Biology, English, Accountancy, Economics</strong>, and more.</p>
-
-                                <h3><GraduationCap className="inline-icon" size={24} /> Class 11–12 All Subjects In-Class Tuition Program | Zeducators</h3>
-                                <p>Excel in senior secondary academics with Zeducators' expert-led <strong>all subjects tuition for Classes 11 and 12</strong>. Designed for science and commerce streams, this <strong>offline, in-class program</strong> offers <strong>36+ hours of focused learning every month</strong>, delivered by experienced subject teachers in evening batches.</p>
-
-                                <div className="content-highlights">
-                                    <h3><BookOpen className="inline-icon" size={24} /> Program Highlights:</h3>
-                                    <ul>
-                                        <li><strong>Grade:</strong> {course.grade}</li>
-                                        <li><strong>Streams Covered:</strong> Science & Commerce</li>
-                                        <li><strong>Subjects:</strong> Physics, Chemistry, Math, Biology, English, Accountancy, Economics, BST</li>
-                                        <li><strong>Mode:</strong> Offline (In-class)</li>
-                                        <li><strong>Batch Timing:</strong> Evening</li>
-                                        <li><strong>Monthly Hours:</strong> 36+ hours</li>
-                                        <li><strong>Location:</strong> Zeducators Learning Center</li>
-                                    </ul>
+                        {/* Key Features Grid */}
+                        {course.features && course.features.length > 0 && (
+                            <section className="content-block">
+                                <h2 className="section-title">
+                                    <Star className="icon" size={24} />
+                                    Key Features
+                                </h2>
+                                <div className="features-grid">
+                                    {course.features.map((feature, index) => (
+                                        <div key={index} className="feature-card">
+                                            <div className="check-icon">
+                                                <CheckCircle2 size={20} />
+                                            </div>
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
                                 </div>
+                            </section>
+                        )}
 
-                                <div className="why-choose-box">
-                                    <h3><CheckCircle2 className="inline-icon green" size={24} /> Why Choose Zeducators?</h3>
-                                    <ul>
-                                        <li>Expert faculty for each stream-specific subject</li>
-                                        <li>Board + competitive exam integration</li>
-                                        <li>Small batches for personalized attention</li>
-                                        <li>Weekly tests & progress tracking</li>
-                                        <li>Real-time doubt solving and revision support</li>
-                                    </ul>
-                                    <p><strong>Zeducators empowers Class 11 & 12 students with structured, quality education across all subjects — helping them achieve academic and competitive excellence.</strong></p>
+                        {/* Why Choose Us (Generic) */}
+                        <section className="content-block why-choose-block">
+                            <h2 className="section-title">
+                                <Users className="icon" size={24} />
+                                Why Choose Zeducators?
+                            </h2>
+                            <div className="benefits-grid">
+                                <div className="benefit-item">
+                                    <div className="benefit-icon">
+                                        <Users size={24} />
+                                    </div>
+                                    <div className="benefit-text">
+                                        <h4>Expert Faculty</h4>
+                                        <p>Learn from educators with proven track records.</p>
+                                    </div>
+                                </div>
+                                <div className="benefit-item">
+                                    <div className="benefit-icon">
+                                        <Target size={24} />
+                                    </div>
+                                    <div className="benefit-text">
+                                        <h4>Exam Focus</h4>
+                                        <p>Integrated preparation for boards and competitive exams.</p>
+                                    </div>
+                                </div>
+                                <div className="benefit-item">
+                                    <div className="benefit-icon">
+                                        <Monitor size={24} />
+                                    </div>
+                                    <div className="benefit-text">
+                                        <h4>Smart Learning</h4>
+                                        <p>Modern infrastructure and digital tools.</p>
+                                    </div>
+                                </div>
+                                <div className="benefit-item">
+                                    <div className="benefit-icon">
+                                        <Clock size={24} />
+                                    </div>
+                                    <div className="benefit-text">
+                                        <h4>Personalized</h4>
+                                        <p>Small batches ensuring individual attention.</p>
+                                    </div>
                                 </div>
                             </div>
-                        )}
+                        </section>
                     </div>
+
+                    {/* Sidebar / Additional Info (Optional - for layout balance) */}
+                    {/* Currently keeping it single column for simplicity as per request, but structured for future sidebar */}
                 </div>
 
                 {/* Related Courses */}
-                <div className="related-products">
-                    <h2>Related Courses</h2>
+                <div className="related-products-section">
+                    <div className="section-header-center">
+                        <h2>Explore Related Courses</h2>
+                        <div className="header-underline"></div>
+                    </div>
                     <div className="related-grid">
                         {relatedCourses.map(related => (
-                            <div key={related.id} className="related-card">
-                                <div className="related-image">
+                            <Link to={`/courses/${related.slug}`} key={related.id} className="related-card-new">
+                                <div className="related-image-new">
                                     <img src={related.image} alt={related.title} />
-                                    <div className="related-overlay">
-                                        <div className="related-badges">
-                                            <div className="badge-icon"><GraduationCap size={16} /></div>
-                                        </div>
-                                        <div className="related-title-overlay">
-                                            <h3>{related.title}</h3>
-                                            <p>({related.grade})</p>
-                                        </div>
+                                    <span className="related-badge">{related.category}</span>
+                                </div>
+                                <div className="related-content-new">
+                                    <h4>{related.title}</h4>
+                                    <p className="related-grade">{related.grade}</p>
+                                    <div className="related-footer">
+                                        <span className="read-more-link">
+                                            View Details <ArrowRight size={16} />
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="related-content">
-                                    <span className="related-category">{related.category}</span>
-                                    <h4>{related.title} ({related.grade})</h4>
-                                    <Link to={`/courses/${related.slug}`} className="btn-read-more">
-                                        Read more
-                                    </Link>
-                                </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

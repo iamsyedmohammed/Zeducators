@@ -1,12 +1,18 @@
 
-import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowRight, Search } from 'lucide-react'
+import { courses } from '../data/courses'
 import './Header.css'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [suggestions, setSuggestions] = useState([])
+  const searchRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,19 +35,84 @@ export default function Header() {
 
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        setIsOpen(false)
+      if (e.key === 'Escape') {
+        if (isSearchOpen) {
+          setIsSearchOpen(false)
+          setSuggestions([])
+        } else if (isOpen) {
+          setIsOpen(false)
+        }
       }
     }
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
-  }, [isOpen])
+  }, [isOpen, isSearchOpen])
+
+  // Click outside to close search
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setIsSearchOpen(false)
+        setSuggestions([])
+      }
+    }
+
+    if (isSearchOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isSearchOpen])
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/courses?search=${encodeURIComponent(searchQuery)}`)
+      setIsSearchOpen(false)
+      setSuggestions([])
+      setIsOpen(false)
+    }
+  }
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value
+    setSearchQuery(query)
+
+    if (query.trim().length > 0) {
+      const filtered = courses.filter(course =>
+        course.title.toLowerCase().includes(query.toLowerCase()) ||
+        course.grade.toLowerCase().includes(query.toLowerCase())
+      ).slice(0, 5) // Limit to 5 suggestions
+      setSuggestions(filtered)
+    } else {
+      setSuggestions([])
+    }
+  }
+
+  const handleSuggestionClick = (slug) => {
+    navigate(`/courses/${slug}`)
+    setIsSearchOpen(false)
+    setSuggestions([])
+    setSearchQuery('')
+    setIsOpen(false)
+  }
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
+    if (!isSearchOpen) {
+      // Focus input after a short delay to allow transition
+      setTimeout(() => {
+        const input = document.querySelector('.header-search-input')
+        if (input) input.focus()
+      }, 100)
+    }
+  }
 
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/courses', label: 'Courses' },
-    { path: '/solutions', label: 'Solutions' },
     { path: '/gallery', label: 'Gallery' },
   ]
 
@@ -121,6 +192,38 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
+          <div className="search-wrapper" ref={searchRef}>
+            <div className="search-container static-search">
+              <form onSubmit={handleSearchSubmit} className="header-search-form">
+                <input
+                  type="text"
+                  placeholder="Search courses..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="header-search-input"
+                  onFocus={() => setIsSearchOpen(true)}
+                />
+                <button type="submit" className="header-search-submit" aria-label="Search">
+                  <Search size={18} />
+                </button>
+              </form>
+              {isSearchOpen && suggestions.length > 0 && (
+                <div className="search-suggestions">
+                  {suggestions.map(course => (
+                    <div
+                      key={course.id}
+                      className="suggestion-item"
+                      onClick={() => handleSuggestionClick(course.slug)}
+                    >
+                      <div className="suggestion-title">{course.title}</div>
+                      <div className="suggestion-grade">{course.grade}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
           <a href="/contact" className="btn btn-primary header-phone">
             <span>Contact Us</span>
             <ArrowRight size={18} />

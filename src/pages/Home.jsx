@@ -53,6 +53,7 @@ export default function Home() {
         schema={organizationSchema}
       />
       <HeroSection />
+      <AffiliationsSection />
       <CategoriesSection />
       <FeaturedCoursesSection />
       <WhyChooseSection />
@@ -60,6 +61,36 @@ export default function Home() {
       <TestimonialsSection />
       <FAQSection />
     </div>
+  )
+}
+
+function AffiliationsSection() {
+  return (
+    <section className="affiliations-section">
+      <div className="container">
+        <div className="affiliations-wrapper">
+          <div className="affiliation-item">
+            <div className="affiliation-icon-box">
+              <Award size={24} />
+            </div>
+            <div className="affiliation-text">
+              <span className="affiliation-label">Recognized By</span>
+              <span className="affiliation-value">Startup India</span>
+            </div>
+          </div>
+          <div className="affiliation-divider"></div>
+          <div className="affiliation-item">
+            <div className="affiliation-icon-box">
+              <ShieldCheck size={24} />
+            </div>
+            <div className="affiliation-text">
+              <span className="affiliation-label">Verified Entity</span>
+              <span className="affiliation-value">Certificate of Incorporation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 

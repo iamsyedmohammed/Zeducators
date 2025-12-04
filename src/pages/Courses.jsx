@@ -75,6 +75,7 @@ function HeroSection() {
 function CoursesSection() {
   const [searchParams, setSearchParams] = useSearchParams()
   const activeCategory = searchParams.get('category') || 'all'
+  const searchQuery = searchParams.get('search') || ''
 
   const categories = [
     { id: 'all', label: 'All Courses', icon: BookOpen },
@@ -85,9 +86,15 @@ function CoursesSection() {
     { id: 'management', label: 'Management', icon: Briefcase }
   ]
 
-  const filteredCourses = activeCategory === 'all'
-    ? courses
-    : courses.filter(course => course.category === activeCategory)
+  const filteredCourses = courses.filter(course => {
+    const matchesCategory = activeCategory === 'all' || course.category === activeCategory
+    const matchesSearch = searchQuery === '' ||
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.grade.toLowerCase().includes(searchQuery.toLowerCase())
+
+    return matchesCategory && matchesSearch
+  })
 
   return (
     <section className="courses-listing section">
@@ -106,34 +113,63 @@ function CoursesSection() {
           ))}
         </div>
 
+        {/* Search Results Header */}
+        {searchQuery && (
+          <div className="search-results-header">
+            <p>Search results for: <strong>"{searchQuery}"</strong></p>
+            <button
+              className="clear-search-btn"
+              onClick={() => setSearchParams(activeCategory === 'all' ? {} : { category: activeCategory })}
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
+
         {/* Courses Grid */}
-        <div className="courses-grid">
-          {filteredCourses.map((course) => (
-            <div key={course.id} className="course-card">
-              <div className="course-image-container">
-                <div className="course-image">
-                  <img src={course.image} alt={`${course.title} - ${course.subtitle}`} />
-                  <div className="course-image-overlay"></div>
+        {filteredCourses.length > 0 ? (
+          <div className="courses-grid">
+            {filteredCourses.map((course) => (
+              <div key={course.id} className="course-card">
+                <div className="course-image-container">
+                  <div className="course-image">
+                    <img src={course.image} alt={`${course.title} - ${course.subtitle}`} />
+                    <div className="course-image-overlay"></div>
+                  </div>
+                  <div className="course-badge-top">
+                    <span className="category-badge">
+                      {categories.find(cat => cat.id === course.category)?.label || course.category}
+                    </span>
+                  </div>
                 </div>
-                <div className="course-badge-top">
-                  <span className="category-badge">
-                    {categories.find(cat => cat.id === course.category)?.label || course.category}
-                  </span>
+                <div className="course-content">
+                  <div className="course-header">
+                    <h3>{course.title}</h3>
+                    <p className="course-grade">{course.grade || course.subtitle}</p>
+                  </div>
+                  <Link to={`/courses/${course.slug}`} className="course-read-more">
+                    <span>Read more</span>
+                    <ArrowRight size={20} />
+                  </Link>
                 </div>
               </div>
-              <div className="course-content">
-                <div className="course-header">
-                  <h3>{course.title}</h3>
-                  <p className="course-grade">{course.grade || course.subtitle}</p>
-                </div>
-                <Link to={`/courses/${course.slug}`} className="course-read-more">
-                  <span>Read more</span>
-                  <ArrowRight size={20} />
-                </Link>
-              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="no-results">
+            <div className="no-results-icon">
+              <Search size={48} />
             </div>
-          ))}
-        </div>
+            <h3>No courses found</h3>
+            <p>We couldn't find any courses matching your search. Try adjusting your filters or search query.</p>
+            <button
+              className="btn btn-primary"
+              onClick={() => setSearchParams({})}
+            >
+              View All Courses
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

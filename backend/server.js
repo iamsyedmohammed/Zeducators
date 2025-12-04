@@ -20,28 +20,28 @@ app.use(express.json());
 
 // Email Transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
 });
 
 // Routes
 app.post('/api/contact', async (req, res) => {
-    const { name, mobile, email, message } = req.body;
+  const { name, mobile, email, course, message } = req.body;
 
-    if (!name || !mobile || !email || !message) {
-        return res.status(400).json({ success: false, message: 'All fields are required' });
-    }
+  if (!name || !mobile || !email || !message) {
+    return res.status(400).json({ success: false, message: 'All fields are required' });
+  }
 
-    // 1. Admin Notification Email (To You)
-    const adminMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        replyTo: email,
-        subject: `New Contact Form Submission from ${name}`,
-        html: `
+  // 1. Admin Notification Email (To You)
+  const adminMailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    replyTo: email,
+    subject: `New Contact Form Submission from ${name}`,
+    html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -79,6 +79,10 @@ app.post('/api/contact', async (req, res) => {
                 <td><a href="tel:${mobile}" style="color: #345a36; text-decoration: none;">${mobile}</a></td>
               </tr>
               <tr>
+                <th>Interested Course</th>
+                <td>${course || 'Not Specified'}</td>
+              </tr>
+              <tr>
                 <th>Message</th>
                 <td style="white-space: pre-wrap;">${message}</td>
               </tr>
@@ -92,14 +96,14 @@ app.post('/api/contact', async (req, res) => {
       </body>
       </html>
     `
-    };
+  };
 
-    // 2. User Acknowledgement Email (To Client)
-    const userMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: `Thank you for contacting Zeducators`,
-        html: `
+  // 2. User Acknowledgement Email (To Client)
+  const userMailOptions = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: `Thank you for contacting Zeducators`,
+    html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -139,26 +143,26 @@ app.post('/api/contact', async (req, res) => {
       </body>
       </html>
     `
-    };
+  };
 
-    try {
-        // Send both emails concurrently
-        await Promise.all([
-            transporter.sendMail(adminMailOptions),
-            transporter.sendMail(userMailOptions)
-        ]);
-        res.status(200).json({ success: true, message: 'Emails sent successfully' });
-    } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ success: false, message: 'Failed to send email' });
-    }
+  try {
+    // Send both emails concurrently
+    await Promise.all([
+      transporter.sendMail(adminMailOptions),
+      transporter.sendMail(userMailOptions)
+    ]);
+    res.status(200).json({ success: true, message: 'Emails sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ success: false, message: 'Failed to send email' });
+  }
 });
 
 // Health check
 app.get('/', (req, res) => {
-    res.send('Zeducators Backend is running');
+  res.send('Zeducators Backend is running');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

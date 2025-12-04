@@ -32,8 +32,6 @@ export const courses = [
         features: ['CBSE/ICSE/State Boards', 'Regular Tests', 'Doubt Sessions'],
         highlights: [
             'Grade: 11th & 12th',
-            'Streams Covered: Science & Commerce',
-            'Subjects: Physics, Chemistry, Math, Biology, English, Accountancy, Economics, BST',
             'Mode: Offline (In-class)',
             'Batch Timing: Evening',
             'Monthly Hours: 36+ hours',
